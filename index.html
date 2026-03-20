@@ -317,32 +317,31 @@
 
     <!-- Event Detail Modal -->
     <div id="event-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="flex items-center justify-center min-h-screen px-4 text-center">
             <div class="fixed inset-0 bg-slate-900/75 transition-opacity" aria-hidden="true" id="modal-backdrop"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
-                <div class="relative">
-                    <img id="modal-image" src="" alt="" class="w-full h-64 object-cover">
-                    <button id="close-modal" class="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-full p-2 hover:bg-white transition-colors">
-                        <i data-lucide="x" class="w-6 h-6 text-slate-600"></i>
-                    </button>
-                </div>
-                <div class="p-8">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span id="modal-date" class="px-3 py-1 bg-secondary/10 text-secondary text-sm font-semibold rounded-full"></span>
-                        <span id="modal-location" class="text-slate-500 text-sm flex items-center gap-1">
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-xl transform transition-all sm:max-w-7xl sm:w-full relative h-[90vh] max-h-[90vh]">
+                <button id="close-modal" class="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-full p-2 hover:bg-white transition-colors z-10">
+                    <i data-lucide="x" class="w-6 h-6 text-slate-600"></i>
+                </button>
+                <div class="flex flex-col md:flex-row h-full">
+                    <div class="relative md:w-1/2">
+                        <img id="modal-image" src="" alt="" class="w-full h-64 md:h-full object-cover">
+                    </div>
+                    <div class="p-8 flex-1 overflow-y-auto md:w-1/2">
+                    <div class="flex flex-col items-center gap-3 mb-3">
+                        <span id="modal-date" class="px-3 py-2 bg-secondary/10 text-secondary text-sm font-semibold rounded-full"></span>
+                        <span id="modal-location" class="text-slate-500 text-sm flex items-center gap-2">
                             <i data-lucide="map-pin" class="w-4 h-4"></i>
                             <span></span>
                         </span>
                     </div>
                     <h3 id="modal-title" class="font-serif text-3xl font-bold text-primary mb-4"></h3>
-                    <p id="modal-description" class="text-slate-600 text-lg leading-relaxed mb-6"></p>
+                    <p id="modal-description" class="text-slate-600 text-sm md:text-base leading-relaxed mb-4"></p>
                     <div id="modal-ticket-container" class="hidden">
-                        <a id="modal-ticket-link" href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-rose-600 transition-colors">
-                            Register Now
-                            <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                        </a>
+                        <a id="modal-ticket-link" href="#" style="display:inline-block;padding:12px 22px;background:#000;color:#fff;text-decoration:none;border-radius:4px;font-weight:bold;"></a>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -590,38 +589,72 @@
     [
         {
             "id": "1",
-            "title": "Winter Artisan Market",
-            "start_date": "2024-12-15",
-            "start_time": "10:00 AM",
-            "end_time": "4:00 PM",
-            "location": "Downtown Rye, NY",
-            "short_description": "A curated selection of local artisans, makers, and small businesses.",
-            "full_description": "Join us for our signature Winter Artisan Market featuring over 50 local vendors. Discover handmade jewelry, artisanal foods, home decor, and unique gifts perfect for the holiday season. Enjoy live music, food trucks, and a festive atmosphere for the whole family.",
-            "ticket_url": "https://www.eventbrite.com",
+            "title": "Luxury Apartment Popup Experience",
+            "start_date": "2026-04-21",
+            "start_time": "4:00 PM",
+            "end_time": "8:00 PM",
+            "location": "222 East Broadway, New York, NY 10002, United States",
+            "short_description": "An evening of fashion, art, cocktails, and bites inside a luxury apartment in downtown Manhattan.",
+            "full_description": "<p>JOIN 914POPUPS FOR AN EVENING OF FASHION, ART, COCKTAILS, AND BITES INSIDE A STUNNING LUXURY APARTMENT IN DOWNTOWN MANHATTAN.</p><p>SET IN A BEAUTIFUL RESIDENCE AT 222 LES TOWER + LOFTS, THIS SPECIAL EVENT BRINGS TOGETHER A CURATED COLLECTION OF POP-UP VENDORS FOR AN ELEVATED EVENING OF SHOPPING, ART, AND COMMUNITY.</p><p><strong>FEATURING:</strong></p><ul class='list-disc pl-6'><li>Artwork by @melnajushkovic</li><li>Cocktails by @jenyjewbrewments</li><li>Bites by @y.e.h.fi</li></ul><p>GUESTS WILL HAVE THE OPPORTUNITY TO EXPLORE THE LUXURY SPACE WHILE DISCOVERING UNIQUE BRANDS AND CONNECTING WITH THE 914POPUPS COMMUNITY.</p><p><strong>VIEW THE PROPERTY:</strong><br/><a href='https://www.corcoran.com/listing/for-sale/222-east-broadway-8a-manhattan-ny-10002/235/0650/regionId/1' target='_blank' rel='noopener noreferrer'>VIEW LISTING</a></p><p class='text-slate-500 text-sm'>Source: https://www.corcoran.com/listing/for-sale/222-east-broadway-8a-manhattan-ny-10002/235/0650/regionId/1</p>",
+            "ticket_url": "mailto:914popups@gmail.com?subject=RSVP%20Luxury%20Apartment%20PopUp%20April%2021&body=Hello%20914PopUps,%0A%0AI%20would%20like%20to%20RSVP%20for%20the%20Luxury%20Apartment%20PopUp%20Experience%20on%20April%2021.%0A%0AName:%0ANumber%20of%20Guests:%0A%0AThank%20you!",
+            "ticket_text": "RSVP to Receive Address",
+            "ticket_new_tab": false,
             "hero_image_url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop"
         },
         {
             "id": "2",
-            "title": "Spring Makers Fair",
-            "start_date": "2024-12-28",
-            "start_time": "11:00 AM",
-            "end_time": "5:00 PM",
-            "location": "Larchmont, NY",
-            "short_description": "Celebrating local makers and creative entrepreneurs.",
-            "full_description": "Our Spring Makers Fair showcases the best creative talent in Westchester. From ceramics and textiles to gourmet treats and wellness products, meet the makers behind your favorite local brands. Free admission with plenty of parking available.",
-            "ticket_url": null,
+            "title": "Health Is Wealth Expo",
+            "start_date": "2026-04-25",
+            "start_time": "9:00 AM",
+            "end_time": "4:30 PM",
+            "location": "Westchester County Center, 198 Central Avenue, White Plains, NY 10606, United States",
+            "short_description": "Westchester County’s largest wellness experience with speakers, workshops, activations, and curated vendors.",
+            "full_description": "<p>JOIN 914POPUPS AT THE HEALTH IS WEALTH EXPO, WESTCHESTER COUNTY'S LARGEST WELLNESS EXPERIENCE BRINGING TOGETHER PHYSICAL, MENTAL, AND FINANCIAL HEALTH FOR A POWERFUL DAY OF LEARNING, CONNECTION, AND INSPIRATION.</p><p>HOSTED AT THE WESTCHESTER COUNTY CENTER, THIS HIGH-IMPACT EVENT FEATURES KEYNOTE SPEAKERS, BREAKOUT SESSIONS, LIVE WELLNESS ACTIVATIONS, AND MORE THAN 40 CURATED WELLNESS, FITNESS, AND LIFESTYLE VENDORS.</p><p><strong>WHAT TO EXPECT</strong></p><ul class='list-disc pl-6'><li>Powerful keynote speakers and expert panels</li><li>Breakout sessions and interactive workshops</li><li>Live fitness and wellness activations</li><li>40+ wellness, fitness, and lifestyle vendors</li><li>Networking and community conversations around health, mindset, and money</li></ul><p><strong>YOUR TICKET INCLUDES</strong></p><ul class='list-disc pl-6'><li>Full access to all sessions and workshops</li><li>Lunch included</li><li>Signed copy of 30 Lessons to Lead</li><li>Vendor marketplace access, networking, and giveaways</li></ul><p><strong>SPECIAL OFFER:</strong><br/>GUESTS ATTENDING WITH 914POPUPS CAN USE PROMO CODE 914POPUPS WHEN REGISTERING.</p><p class='text-slate-500 text-sm'>Source: https://www.eventeny.com/events/healthiswealth-25647/</p>",
+            "ticket_url": "https://www.eventeny.com/events/healthiswealth-25647/",
+            "ticket_text": "REGISTER FOR THE EXPO",
+            "ticket_new_tab": true,
             "hero_image_url": "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&h=600&fit=crop"
         },
         {
             "id": "3",
-            "title": "Summer Night Market",
-            "start_date": "2025-01-15",
-            "start_time": "5:00 PM",
-            "end_time": "10:00 PM",
-            "location": "White Plains, NY",
-            "short_description": "An evening of shopping, dining, and entertainment under the stars.",
-            "full_description": "Experience our popular Summer Night Market with extended hours and evening festivities. Browse vendor stalls, enjoy street food from local restaurants, listen to live music, and shop unique finds in a magical evening atmosphere. Perfect for a night out with friends or family.",
-            "ticket_url": "https://www.eventbrite.com",
+            "title": "Anine Bing Collaboration Popup",
+            "start_date": "2026-04-29",
+            "start_time": "6:00 PM",
+            "end_time": "8:00 PM",
+            "location": "Meatpacking District, 807 Washington Street, New York, NY 10014, United States",
+            "short_description": "A curated Anine Bing collaboration event with fashion, community, and pop-up vendors in the Meatpacking District.",
+            "full_description": "<p>JOIN 914POPUPS FOR A SPECIAL COLLABORATION EVENT WITH @ANINEBING IN THE HEART OF NEW YORK'S MEATPACKING DISTRICT.</p><p>THIS CURATED EVENING BRINGS TOGETHER FASHION, COMMUNITY, AND A SELECTION OF POP-UP VENDORS FOR A UNIQUE SHOPPING EXPERIENCE IN ONE OF MANHATTAN'S MOST ICONIC NEIGHBORHOODS.</p><p>GUESTS ARE INVITED TO EXPLORE NEW COLLECTIONS, CONNECT WITH FELLOW FASHION LOVERS, AND EXPERIENCE THE VIBRANT ATMOSPHERE OF THE MEATPACKING DISTRICT.</p><p><strong>LEARN MORE ABOUT THE BRAND:</strong><br/>FOLLOW <a href='https://www.instagram.com/aninebing/' target='_blank' rel='noopener noreferrer'>@ANINEBING</a></p><p class='text-slate-500 text-sm'>Source: https://www.instagram.com/aninebing/</p>",
+            "ticket_url": "mailto:914popups@gmail.com?subject=RSVP%20Anine%20Bing%20Collaboration%20PopUp&body=Hello%20914PopUps,%0A%0AI%20would%20like%20to%20RSVP%20for%20the%20Anine%20Bing%20Collaboration%20PopUp.%0A%0AName:%0ANumber%20of%20Guests:%0A%0AThank%20you!",
+            "ticket_text": "RSVP for Event",
+            "ticket_new_tab": false,
+            "hero_image_url": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop"
+        },
+        {
+            "id": "4",
+            "title": "Toccin Collaboration Popup",
+            "start_date": "2026-05-12",
+            "start_time": "6:00 PM",
+            "end_time": "8:00 PM",
+            "location": "550 7th Avenue Room 604, New York, NY 10018, United States",
+            "short_description": "A Toccin collaboration event with fashion, community, and pop-up vendors in Midtown Manhattan.",
+            "full_description": "<p>JOIN 914POPUPS FOR A SPECIAL COLLABORATION EVENT WITH @TOCCIN.OFFICIAL IN MIDTOWN MANHATTAN.</p><p>THIS CURATED EVENING BRINGS TOGETHER FASHION, COMMUNITY, AND A SELECTION OF POP-UP VENDORS FOR A UNIQUE SHOPPING EXPERIENCE FEATURING THE ELEVATED STYLE AND CRAFTSMANSHIP OF TOCCIN.</p><p>GUESTS ARE INVITED TO EXPLORE THE COLLECTION, DISCOVER EMERGING BRANDS, AND CONNECT WITH THE 914POPUPS COMMUNITY IN AN INTIMATE SHOWROOM SETTING.</p><p><strong>LEARN MORE ABOUT THE BRAND:</strong><br/>FOLLOW <a href='https://www.instagram.com/toccin.official/' target='_blank' rel='noopener noreferrer'>@TOCCIN.OFFICIAL</a></p><p class='text-slate-500 text-sm'>Source: https://www.instagram.com/toccin.official/</p>",
+            "ticket_url": "mailto:914popups@gmail.com?subject=RSVP%20Toccin%20Collaboration%20PopUp&body=Hello%20914PopUps,%0A%0AI%20would%20like%20to%20RSVP%20for%20the%20Toccin%20Collaboration%20PopUp.%0A%0AName:%0ANumber%20of%20Guests:%0A%0AThank%20you!",
+            "ticket_text": "RSVP for Event",
+            "ticket_new_tab": false,
+            "hero_image_url": "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&h=600&fit=crop"
+        },
+        {
+            "id": "5",
+            "title": "Suds on the Sound",
+            "start_date": "2026-05-16",
+            "start_time": "1:00 PM",
+            "end_time": "6:00 PM",
+            "location": "The Barley Beach House, 95 Dearborn Avenue, Rye, NY 10580, United States",
+            "short_description": "A waterfront craft beverage festival with tastings, food trucks, live music, and artisan vendors.",
+            "full_description": "<p>JOIN 914POPUPS AT SUDS ON THE SOUND, A PREMIER WATERFRONT CRAFT BEVERAGE FESTIVAL HOSTED BY THE BARLEY BEACH HOUSE IN RYE, NEW YORK.</p><p>THIS EXCITING FESTIVAL FEATURES 50+ BREWERIES AND OVER 100 TASTINGS INCLUDING CRAFT BEER, READY-TO-DRINK COCKTAILS, AND PREMIUM CANNED Seltzers. GUESTS CAN ALSO ENJOY FOOD TRUCKS, LIVE MUSIC, AND A CURATED MARKETPLACE FEATURING 75 ARTISAN AND SHOP VENDORS.</p><p>SET AGAINST THE BEAUTIFUL BACKDROP OF THE LONG ISLAND SOUND, SUDS ON THE SOUND IS ONE OF WESTCHESTER'S MOST ANTICIPATED SPRING FESTIVALS AND PROUDLY SUPPORTS THE TUNNEL TO TOWERS FOUNDATION.</p><p><strong>EVENT HIGHLIGHTS</strong></p><ul class='list-disc pl-6'><li>50+ breweries and 100+ tastings</li><li>Craft beer, RTD cocktails, and canned seltzers</li><li>Live music and waterfront atmosphere</li><li>Food trucks and artisan vendor marketplace</li><li>VIP Utopia Lounge experience sponsored by Sam Adams</li></ul><p><strong>IMPORTANT:</strong> THIS IS A 21+ EVENT. VALID ID IS REQUIRED FOR ALCOHOL TASTINGS. EVENT TAKES PLACE RAIN OR SHINE.</p><p class='text-slate-500 text-sm'>Source: https://www.eventbrite.com/e/suds-on-the-sound-tickets-1980647445828</p>",
+            "ticket_url": "https://www.eventbrite.com/e/suds-on-the-sound-tickets-1980647445828",
+            "ticket_text": "Get Tickets",
+            "ticket_new_tab": true,
             "hero_image_url": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop"
         }
     ]
@@ -746,12 +779,6 @@
                 const dayNumber = document.createElement('div');
                 dayNumber.className = isToday ? 'text-sm font-bold text-secondary mb-1' : 'text-sm font-semibold text-slate-700 mb-1';
                 dayNumber.textContent = day;
-                if (isToday) {
-                    const todayLabel = document.createElement('span');
-                    todayLabel.className = 'text-xs font-medium text-secondary ml-1';
-                    todayLabel.textContent = 'Today';
-                    dayNumber.appendChild(todayLabel);
-                }
                 cell.appendChild(dayNumber);
                 
                 const dayEvents = getEventsForDate(date);
@@ -846,14 +873,27 @@
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
-            }) + ' • ' + event.start_time;
+            }) + ' • ' + (event.end_time ? `${event.start_time} - ${event.end_time}` : event.start_time);
             document.getElementById('modal-location').querySelector('span').textContent = event.location;
-            document.getElementById('modal-description').textContent = event.full_description;
+            document.getElementById('modal-description').innerHTML = event.full_description || '';
             
             const ticketContainer = document.getElementById('modal-ticket-container');
+            const ticketLink = document.getElementById('modal-ticket-link');
             if (event.ticket_url) {
                 ticketContainer.classList.remove('hidden');
-                document.getElementById('modal-ticket-link').href = event.ticket_url;
+                ticketLink.href = event.ticket_url;
+                ticketLink.textContent = event.ticket_text || 'Register Now';
+
+                const ticketStyle = 'display:inline-block;padding:12px 22px;background:#000;color:#fff;text-decoration:none;border-radius:4px;font-weight:bold;';
+                ticketLink.style.cssText = ticketStyle;
+
+                if (event.ticket_new_tab) {
+                    ticketLink.target = '_blank';
+                    ticketLink.rel = 'noopener noreferrer';
+                } else {
+                    ticketLink.removeAttribute('target');
+                    ticketLink.removeAttribute('rel');
+                }
             } else {
                 ticketContainer.classList.add('hidden');
             }
