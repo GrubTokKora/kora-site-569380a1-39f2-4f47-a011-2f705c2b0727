@@ -31,7 +31,8 @@
         window.KORA_SITE_CONFIG = {
             apiBaseUrl: "https://kora-agent.quseappdev.com",
             businessId: "569380a1-39f2-4f47-a011-2f705c2b0727",
-            recaptchaSiteKey: "6LfRt44sAAAAACVTvFvGjoufmEcZqZk_pT4T_5Xd"
+            recaptchaSiteKey: "6LfRt44sAAAAACVTvFvGjoufmEcZqZk_pT4T_5Xd
+"
         };
     </script>
     
@@ -684,14 +685,26 @@
             }
             
             // Days
+            const today = new Date();
             for (let day = 1; day <= daysInMonth; day++) {
                 const date = new Date(year, month, day);
+                const isToday = date.getDate() === today.getDate() && 
+                               date.getMonth() === today.getMonth() && 
+                               date.getFullYear() === today.getFullYear();
                 const cell = document.createElement('div');
-                cell.className = 'calendar-day p-2 bg-slate-50 hover:bg-white rounded-lg border border-transparent hover:border-secondary/20 transition-all cursor-pointer relative group min-h-[100px]';
+                cell.className = isToday 
+                    ? 'calendar-day p-2 bg-secondary/10 hover:bg-secondary/20 rounded-lg border-2 border-secondary ring-2 ring-secondary/30 transition-all cursor-pointer relative group min-h-[100px]' 
+                    : 'calendar-day p-2 bg-slate-50 hover:bg-white rounded-lg border border-transparent hover:border-secondary/20 transition-all cursor-pointer relative group min-h-[100px]';
                 
                 const dayNumber = document.createElement('div');
-                dayNumber.className = 'text-sm font-semibold text-slate-700 mb-1';
+                dayNumber.className = isToday ? 'text-sm font-bold text-secondary mb-1' : 'text-sm font-semibold text-slate-700 mb-1';
                 dayNumber.textContent = day;
+                if (isToday) {
+                    const todayLabel = document.createElement('span');
+                    todayLabel.className = 'text-xs font-medium text-secondary ml-1';
+                    todayLabel.textContent = 'Today';
+                    dayNumber.appendChild(todayLabel);
+                }
                 cell.appendChild(dayNumber);
                 
                 const dayEvents = getEventsForDate(date);
