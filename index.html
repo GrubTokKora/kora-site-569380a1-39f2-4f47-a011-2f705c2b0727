@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>914 Pop Ups - Curated Local Markets & Events in Westchester</title>
+    <meta name="description" content="Discover exclusive pop-up markets, artisan fairs, and community festivals in Westchester with Melissa Tomlin of 914PopUps. Connecting local creators and small businesses with the community.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="914 Pop Ups - Curated Local Markets & Events">
+    <meta property="og:description" content="Discover exclusive pop-up markets and artisan fairs in Westchester. Unique experiences bringing together local creators and the community.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1200&h=630&fit=crop">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
+    <!-- Kora Config -->
+    <script>
+        window.KORA_SITE_CONFIG = {
+            apiBaseUrl: "",
+            businessId: "569380a1-39f2-4f47-a011-2f705c2b0727",
+            recaptchaSiteKey: ""
+        };
+    </script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#F43F5E',
+                        accent: '#FBBF24',
+                        cream: '#FFFBF7',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "914 Pop Ups",
+        "description": "Explore the best of Westchester with curated pop-up markets, artisan fairs, and community festivals.",
+        "url": "https://www.914popups.com/",
+        "founder": {
+            "@type": "Person",
+            "name": "Melissa Tomlin"
+        },
+        "areaServed": "Westchester County, NY",
+        "event": {
+            "@type": "Event",
+            "name": "Pop-Up Markets and Artisan Fairs"
+        }
+    }
+    </script>
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(244, 63, 94, 0.8) 100%);
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .calendar-day {
+            min-height: 100px;
+        }
+        .event-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-cream antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl font-bold text-primary tracking-tight">
+                        914 <span class="text-secondary">Pop Ups</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-slate-600 hover:text-secondary font-medium transition-colors">Home</a>
+                    <a href="#about" class="text-slate-600 hover:text-secondary font-medium transition-colors">About</a>
+                    <a href="#events" class="text-slate-600 hover:text-secondary font-medium transition-colors">Events</a>
+                    <a href="#gallery" class="text-slate-600 hover:text-secondary font-medium transition-colors">Gallery</a>
+                    <a href="#contact" class="text-slate-600 hover:text-secondary font-medium transition-colors">Contact</a>
+                    <a href="#newsletter" class="bg-secondary text-white px-6 py-2.5 rounded-full font-medium hover:bg-rose-600 transition-all transform hover:scale-105 shadow-lg shadow-rose-500/30">
+                        Join the List
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#home" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-secondary hover:bg-rose-50 rounded-md">Home</a>
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-secondary hover:bg-rose-50 rounded-md">About</a>
+                <a href="#events" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-secondary hover:bg-rose-50 rounded-md">Events</a>
+                <a href="#gallery" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-secondary hover:bg-rose-50 rounded-md">Gallery</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-secondary hover:bg-rose-50 rounded-md">Contact</a>
+                <a href="#newsletter" class="block px-3 py-3 text-base font-medium text-secondary font-semibold">Join the List</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1920&h=1080&fit=crop" alt="Pop up market scene" class="w-full h-full object-cover">
+            <div class="hero-gradient absolute inset-0"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+            <span class="inline-block py-1 px-4 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-semibold mb-6 border border-white/30 animate-fade-in">
+                Westchester's Premier Pop-Up Curator
+            </span>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 text-shadow leading-tight animate-fade-in" style="animation-delay: 0.1s;">
+                Discover Local<br>
+                <span class="text-accent">Magic</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-10 font-light animate-fade-in" style="animation-delay: 0.2s;">
+                Explore exclusive pop-up markets, artisan fairs, and community festivals curated by Melissa Tomlin throughout Westchester and beyond.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style="animation-delay: 0.3s;">
+                <a href="#events" class="px-8 py-4 bg-accent text-primary font-bold rounded-full hover:bg-amber-400 transition-all transform hover:scale-105 shadow-xl text-lg">
+                    Explore Events
+                </a>
+                <a href="#about" class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 font-semibold rounded-full hover:bg-white/20 transition-all text-lg">
+                    Learn More
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-white/70"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-secondary/10 rounded-full"></div>
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-accent/20 rounded-full"></div>
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&h=600&fit=crop" alt="Melissa Tomlin at a pop-up event" class="relative rounded-3xl shadow-2xl w-full object-cover h-[500px]">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs hidden md:block">
+                        <p class="font-serif text-lg text-primary italic">"Bringing the community together, one pop-up at a time."</p>
+                        <p class="text-sm text-slate-500 mt-2 font-medium">— Melissa Tomlin</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <span class="text-secondary font-semibold tracking-wider uppercase text-sm">About 914 Pop Ups</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-primary mt-3 mb-6 leading-tight">
+                        Curating Unforgettable Local Experiences
+                    </h2>
+                    <div class="space-y-4 text-slate-600 text-lg leading-relaxed">
+                        <p>
+                            Explore the best of Westchester and its neighboring cities with Melissa Tomlin of 914PopUps! From exclusive pop-up markets and artisan fairs to exciting community festivals and boutique events, there's always something happening near you.
+                        </p>
+                        <p>
+                            Melissa curates unique experiences that bring together local creators, small businesses, and residents for unforgettable moments. Every event is thoughtfully designed to showcase the incredible talent within our community while creating spaces for genuine connection.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 grid grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-secondary">50+</div>
+                            <div class="text-sm text-slate-500 mt-1">Events Curated</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-secondary">200+</div>
+                            <div class="text-sm text-slate-500 mt-1">Local Vendors</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-secondary">10K+</div>
+                            <div class="text-sm text-slate-500 mt-1">Happy Visitors</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-secondary font-semibold tracking-wider uppercase text-sm">Upcoming Experiences</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-primary mt-3">Events Calendar</h2>
+                <p class="text-slate-600 mt-4 max-w-2xl mx-auto text-lg">Join us at our next pop-up market or community gathering. There's always something exciting on the horizon.</p>
+            </div>
+            
+            <!-- View Toggle -->
+            <div class="flex justify-center mb-8">
+                <div class="bg-white p-1 rounded-full shadow-md inline-flex">
+                    <button id="calendar-view-btn" class="px-6 py-2 rounded-full bg-secondary text-white font-medium transition-all shadow-md">
+                        Calendar
+                    </button>
+                    <button id="list-view-btn" class="px-6 py-2 rounded-full text-slate-600 font-medium transition-all hover:text-secondary">
+                        List
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Calendar View -->
+            <div id="calendar-view" class="bg-white rounded-3xl shadow-xl p-6 md:p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <button id="prev-month" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+                        <i data-lucide="chevron-left" class="w-6 h-6 text-slate-600"></i>
+                    </button>
+                    <h3 id="current-month-year" class="font-serif text-2xl font-bold text-primary"></h3>
+                    <div class="flex gap-2">
+                        <button id="today-btn" class="px-4 py-2 text-sm font-medium text-secondary hover:bg-rose-50 rounded-full transition-colors">
+                            Today
+                        </button>
+                        <button id="next-month" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+                            <i data-lucide="chevron-right" class="w-6 h-6 text-slate-600"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-7 gap-2 mb-2">
+                    <div class="text-center text-sm font-semibold text-slate-400 py-2">SU</div>
+                    <div class="text-center text-sm font-semibold text-slate-400 py-2">MO</div>
+                    <div class="text-center text-sm font-semibold text-slate-400 py-2">TU</div>
+                    <div class="text-center text-sm font-semibold text-slate-400 py-2">WE</div>
+                    <div class="text-center text-sm font-semibold text-slate-400 py-2">TH</div>
+                    <div class="text-center text-sm font-semibold text-slate-400 py-2">FR</div>
+                    <div class="text-center text-sm font-semibold text-slate-400 py-2">SA</div>
+                </div>
+                
+                <div id="calendar-grid" class="grid grid-cols-7 gap-2">
+                    <!-- Calendar days injected by JS -->
+                </div>
+            </div>
+            
+            <!-- List View (Hidden by default) -->
+            <div id="list-view" class="hidden space-y-6">
+                <!-- Event cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Detail Modal -->
+    <div id="event-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-slate-900/75 transition-opacity" aria-hidden="true" id="modal-backdrop"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
+                <div class="relative">
+                    <img id="modal-image" src="" alt="" class="w-full h-64 object-cover">
+                    <button id="close-modal" class="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-full p-2 hover:bg-white transition-colors">
+                        <i data-lucide="x" class="w-6 h-6 text-slate-600"></i>
+                    </button>
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span id="modal-date" class="px-3 py-1 bg-secondary/10 text-secondary text-sm font-semibold rounded-full"></span>
+                        <span id="modal-location" class="text-slate-500 text-sm flex items-center gap-1">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            <span></span>
+                        </span>
+                    </div>
+                    <h3 id="modal-title" class="font-serif text-3xl font-bold text-primary mb-4"></h3>
+                    <p id="modal-description" class="text-slate-600 text-lg leading-relaxed mb-6"></p>
+                    <div id="modal-ticket-container" class="hidden">
+                        <a id="modal-ticket-link" href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-rose-600 transition-colors">
+                            Register Now
+                            <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-secondary font-semibold tracking-wider uppercase text-sm">Visual Stories</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-primary mt-3">Event Gallery</h2>
+                <p class="text-slate-600 mt-4 max-w-2xl mx-auto text-lg">Glimpses from our past pop-ups and community gatherings.</p>
+            </div>
+            
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div class="gallery-item relative group overflow-hidden rounded-2xl cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&h=800&fit=crop" alt="Pop up market vendor table" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Artisan Market Day</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item relative group overflow-hidden rounded-2xl cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop" alt="Shopping at pop up" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Community Shopping</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item relative group overflow-hidden rounded-2xl cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=800&fit=crop" alt="Event setup" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Festival Atmosphere</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item relative group overflow-hidden rounded-2xl cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?w=600&h=600&fit=crop" alt="Local crafts" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Handcrafted Goods</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item relative group overflow-hidden rounded-2xl cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1464122632645-bf5f12bbe80b?w=600&h=800&fit=crop" alt="Food vendors" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Local Food Vendors</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item relative group overflow-hidden rounded-2xl cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=400&fit=crop" alt="Crowd at event" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Community Gathering</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="py-24 bg-primary relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full filter blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="text-accent font-semibold tracking-wider uppercase text-sm">Stay Connected</span>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mt-3 mb-6">Never Miss an Event</h2>
+            <p class="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">Join our community to get exclusive early access to pop-up announcements, vendor spotlights, and special offers.</p>
+            
+            <form id="newsletter-form" class="max-w-xl mx-auto bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10">
+                <div class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-left text-sm font-medium text-slate-300 mb-1">Email Address</label>
+                            <input type="email" id="newsletter-email" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" placeholder="you@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-left text-sm font-medium text-slate-300 mb-1">Phone Number</label>
+                            <input type="tel" id="newsletter-phone" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" placeholder="(914) 555-0123">
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row gap-4 justify-center pt-2">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" id="newsletter-email-optin" class="w-5 h-5 rounded border-slate-400 text-secondary focus:ring-secondary bg-white/10">
+                            <span class="text-slate-300 text-sm">Email updates</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" id="newsletter-sms-optin" class="w-5 h-5 rounded border-slate-400 text-secondary focus:ring-secondary bg-white/10">
+                            <span class="text-slate-300 text-sm">SMS updates</span>
+                        </label>
+                    </div>
+                    
+                    <p id="newsletter-message" class="text-sm min-h-[1.25rem]"></p>
+                    
+                    <button type="submit" class="w-full py-4 bg-secondary text-white font-bold rounded-xl hover:bg-rose-600 transition-all transform hover:scale-[1.02] shadow-lg shadow-rose-500/30">
+                        Subscribe Now
+                    </button>
+                </div>
+                <p class="text-xs text-slate-400 mt-4">By subscribing, you agree to receive marketing communications from 914 Pop Ups.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <span class="text-secondary font-semibold tracking-wider uppercase text-sm">Get In Touch</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-primary mt-3 mb-6">Let's Create Something Special</h2>
+                    <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+                        Interested in vending at our next event, partnering with 914 Pop Ups, or just want to say hello? We'd love to hear from you.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6 text-secondary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-primary">Email Us</h3>
+                                <a href="mailto:hello@914popups.com" class="text-slate-600 hover:text-secondary transition-colors">hello@914popups.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="instagram" class="w-6 h-6 text-secondary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-primary">Follow Us</h3>
+                                <a href="https://instagram.com/914popups" target="_blank" class="text-slate-600 hover:text-secondary transition-colors">@914popups</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-secondary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-primary">Location</h3>
+                                <p class="text-slate-600">Westchester County, NY<br>and surrounding areas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-3xl shadow-xl p-8">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="contact-name" class="block text-sm font-semibold text-slate-700 mb-2">Full Name *</label>
+                            <input type="text" id="contact-name" name="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:outline-none transition-all" placeholder="Your name">
+                            <p class="text-red-500 text-sm mt-1 hidden" id="name-error">Please enter your name.</p>
+                        </div>
+                        
+                        <div>
+                            <label for="contact-email" class="block text-sm font-semibold text-slate-700 mb-2">Email Address *</label>
+                            <input type="email" id="contact-email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:outline-none transition-all" placeholder="you@example.com">
+                            <p class="text-red-500 text-sm mt-1 hidden" id="email-error">Please enter a valid email address.</p>
+                        </div>
+                        
+                        <div>
+                            <label for="contact-message" class="block text-sm font-semibold text-slate-700 mb-2">Message *</label>
+                            <textarea id="contact-message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:outline-none transition-all resize-none" placeholder="How can we help you?"></textarea>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="message-error">Please enter a message.</p>
+                        </div>
+                        
+                        <div class="g-recaptcha" data-sitekey=""></div>
+                        <p class="text-red-500 text-sm hidden" id="captcha-error">Please complete the CAPTCHA.</p>
+                        
+                        <button type="submit" class="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-slate-800 transition-all transform hover:scale-[1.02] shadow-lg">
+                            Send Message
+                        </button>
+                        
+                        <p id="form-status" class="text-center text-sm font-medium"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <a href="#" class="font-serif text-3xl font-bold tracking-tight mb-4 block">
+                        914 <span class="text-secondary">Pop Ups</span>
+                    </a>
+                    <p class="text-slate-400 max-w-sm leading-relaxed">
+                        Curating unique pop-up markets and community events throughout Westchester County. Connecting local creators with the community.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="#events" class="hover:text-white transition-colors">Events</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/914popups" target="_blank" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-500 text-sm">&copy; 2024 914 Pop Ups. All rights reserved.</p>
+                <p class="text-slate-500 text-sm mt-2 md:mt-0">Curated with <span class="text-secondary">♥</span> by Melissa Tomlin</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Events Data -->
+    <script type="application/json" id="events-data">
+    [
+        {
+            "id": "1",
+            "title": "Winter Artisan Market",
+            "start_date": "2024-12-15",
+            "start_time": "10:00 AM",
+            "end_time": "4:00 PM",
+            "location": "Downtown Rye, NY",
+            "short_description": "A curated selection of local artisans, makers, and small businesses.",
+            "full_description": "Join us for our signature Winter Artisan Market featuring over 50 local vendors. Discover handmade jewelry, artisanal foods, home decor, and unique gifts perfect for the holiday season. Enjoy live music, food trucks, and a festive atmosphere for the whole family.",
+            "ticket_url": "https://www.eventbrite.com",
+            "hero_image_url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop"
+        },
+        {
+            "id": "2",
+            "title": "Spring Makers Fair",
+            "start_date": "2024-12-28",
+            "start_time": "11:00 AM",
+            "end_time": "5:00 PM",
+            "location": "Larchmont, NY",
+            "short_description": "Celebrating local makers and creative entrepreneurs.",
+            "full_description": "Our Spring Makers Fair showcases the best creative talent in Westchester. From ceramics and textiles to gourmet treats and wellness products, meet the makers behind your favorite local brands. Free admission with plenty of parking available.",
+            "ticket_url": null,
+            "hero_image_url": "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&h=600&fit=crop"
+        },
+        {
+            "id": "3",
+            "title": "Summer Night Market",
+            "start_date": "2025-01-15",
+            "start_time": "5:00 PM",
+            "end_time": "10:00 PM",
+            "location": "White Plains, NY",
+            "short_description": "An evening of shopping, dining, and entertainment under the stars.",
+            "full_description": "Experience our popular Summer Night Market with extended hours and evening festivities. Browse vendor stalls, enjoy street food from local restaurants, listen to live music, and shop unique finds in a magical evening atmosphere. Perfect for a night out with friends or family.",
+            "ticket_url": "https://www.eventbrite.com",
+            "hero_image_url": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop"
+        }
+    ]
+    </script>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+        
+        // Calendar Functionality
+        const eventsData = JSON.parse(document.getElementById('events-data').textContent);
+        let currentDate = new Date();
+        let currentView = 'calendar'; // 'calendar' or 'list'
+        
+        const calendarViewBtn = document.getElementById('calendar-view-btn');
+        const listViewBtn = document.getElementById('list-view-btn');
+        const calendarView = document.getElementById('calendar-view');
+        const listView = document.getElementById('list-view');
+        
+        function toggleView(view) {
+            currentView = view;
+            if (view === 'calendar') {
+                calendarView.classList.remove('hidden');
+                listView.classList.add('hidden');
+                calendarViewBtn.classList.add('bg-secondary', 'text-white', 'shadow-md');
+                calendarViewBtn.classList.remove('text-slate-600', 'hover:text-secondary');
+                listViewBtn.classList.remove('bg-secondary', 'text-white', 'shadow-md');
+                listViewBtn.classList.add('text-slate-600', 'hover:text-secondary');
+            } else {
+                calendarView.classList.add('hidden');
+                listView.classList.remove('hidden');
+                listViewBtn.classList.add('bg-secondary', 'text-white', 'shadow-md');
+                listViewBtn.classList.remove('text-slate-600', 'hover:text-secondary');
+                calendarViewBtn.classList.remove('bg-secondary', 'text-white', 'shadow-md');
+                calendarViewBtn.classList.add('text-slate-600', 'hover:text-secondary');
+                renderListView();
+            }
+        }
+        
+        calendarViewBtn.addEventListener('click', () => toggleView('calendar'));
+        listViewBtn.addEventListener('click', () => toggleView('list'));
+        
+        function getEventsForDate(date) {
+            return eventsData.filter(event => {
+                const eventDate = new Date(event.start_date);
+                return eventDate.toDateString() === date.toDateString();
+            });
+        }
+        
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            document.getElementById('current-month-year').textContent = 
+                new Date(year, month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            const grid = document.getElementById('calendar-grid');
+            grid.innerHTML = '';
+            
+            // Empty cells for previous month
+            for (let i = 0; i < firstDay; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'calendar-day p-2 bg-slate-50/50 rounded-lg';
+                grid.appendChild(emptyCell);
+            }
+            
+            // Days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, month, day);
+                const cell = document.createElement('div');
+                cell.className = 'calendar-day p-2 bg-slate-50 hover:bg-white rounded-lg border border-transparent hover:border-secondary/20 transition-all cursor-pointer relative group min-h-[100px]';
+                
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'text-sm font-semibold text-slate-700 mb-1';
+                dayNumber.textContent = day;
+                cell.appendChild(dayNumber);
+                
+                const dayEvents = getEventsForDate(date);
+                dayEvents.forEach(event => {
+                    const eventDot = document.createElement('div');
+                    eventDot.className = 'event-dot bg-secondary mb-1';
+                    cell.appendChild(eventDot);
+                    
+                    const eventTitle = document.createElement('div');
+                    eventTitle.className = 'text-xs text-slate-600 truncate hidden group-hover:block absolute left-2 right-2 bg-white p-2 rounded shadow-lg z-10';
+                    eventTitle.textContent = event.title;
+                    cell.appendChild(eventTitle);
+                });
+                
+                if (dayEvents.length > 0) {
+                    cell.addEventListener('click', () => openEventModal(dayEvents[0]));
+                }
+                
+                grid.appendChild(cell);
+            }
+        }
+        
+        function renderListView() {
+            const container = document.getElementById('list-view');
+            container.innerHTML = '';
+            
+            eventsData.forEach(event => {
+                const date = new Date(event.start_date);
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl shadow-md overflow-hidden card-hover cursor-pointer flex flex-col md:flex-row';
+                card.innerHTML = `
+                    <div class="md:w-1/3 h-48 md:h-auto">
+                        <img src="${event.hero_image_url}" alt="${event.title}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 md:w-2/3 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm font-semibold rounded-full">
+                                ${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                            </span>
+                            <span class="text-slate-500 text-sm flex items-center gap-1">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i> ${event.location}
+                            </span>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-primary mb-2">${event.title}</h3>
+                        <p class="text-slate-600 mb-4">${event.short_description}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-slate-500">${event.start_time} - ${event.end_time}</span>
+                            ${event.ticket_url ? '<span class="text-secondary font-semibold text-sm">Registration Open →</span>' : ''}
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => openEventModal(event));
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+        
+        // Event Modal
+        const modal = document.getElementById('event-modal');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const closeModal = document.getElementById('close-modal');
+        
+        function openEventModal(event) {
+            document.getElementById('modal-image').src = event.hero_image_url;
+            document.getElementById('modal-title').textContent = event.title;
+            document.getElementById('modal-date').textContent = new Date(event.start_date).toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            }) + ' • ' + event.start_time;
+            document.getElementById('modal-location').querySelector('span').textContent = event.location;
+            document.getElementById('modal-description').textContent = event.full_description;
+            
+            const ticketContainer = document.getElementById('modal-ticket-container');
+            if (event.ticket_url) {
+                ticketContainer.classList.remove('hidden');
+                document.getElementById('modal-ticket-link').href = event.ticket_url;
+            } else {
+                ticketContainer.classList.add('hidden');
+            }
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+        
+        function closeEventModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        closeModal.addEventListener('click', closeEventModal);
+        modalBackdrop.addEventListener('click', closeEventModal);
+        
+        // Calendar Navigation
+        document.getElementById('prev-month').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+        
+        document.getElementById('next-month').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+        
+        document.getElementById('today-btn').addEventListener('click', () => {
+            currentDate = new Date();
+            renderCalendar();
+        });
+        
+        // Initialize Calendar
+        renderCalendar();
+        
+        // Newsletter Form Handler
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var cfg = window.KORA_SITE_CONFIG || {};
+            var apiBaseUrl = (cfg.apiBaseUrl || '').replace(/\/+$/, '');
+            var businessId = cfg.businessId;
+            var emailEl = document.getElementById('newsletter-email');
+            var phoneEl = document.getElementById('newsletter-phone');
+            var emailOpt = document.getElementById('newsletter-email-optin');
+            var smsOpt = document.getElementById('newsletter-sms-optin');
+            var msgEl = document.getElementById('newsletter-message');
+            
+            var email = emailEl ? (emailEl.value || '').trim() : '';
+            var phone = phoneEl ? (phoneEl.value || '').trim() : '';
+            var emailOptIn = emailOpt ? emailOpt.checked : false;
+            var smsOptIn = smsOpt ? smsOpt.checked : false;
+            
+            function showMsg(t, err) {
+                if (msgEl) {
+                    msgEl.textContent = t || '';
+                    msgEl.style.color = err ? '#f87171' : '#4ade80';
+                }
+            }
+            
+            if (!email && !phone) {
+                showMsg('Please enter email or phone.', true);
+                return;
+            }
+            if (!emailOptIn && !smsOptIn) {
+                showMsg('Please select at least one: Email or SMS updates.', true);
+                return;
+            }
+            if (smsOptIn && !phone) {
+                showMsg('Please enter your phone for SMS updates.', true);
+                return;
+            }
+            if (emailOptIn && !email) {
+                showMsg('Please enter your email for email updates.', true);
+                return;
+            }
+            if (!apiBaseUrl || !businessId) {
+                showMsg('Subscription is not configured.', true);
+                return;
+            }
+            
+            showMsg('Subscribing...', false);
+            fetch(apiBaseUrl + '/api/v1/public/newsletter/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    business_id: businessId,
+                    email: email || null,
+                    phone_number: phone || null,
+                    email_opt_in: emailOptIn,
+                    sms_opt_in: smsOptIn,
+                    source: 'static_site_widget'
+                })
+            }).then(function(r) {
+                if (r.ok) return r.json();
+                throw new Error('Request failed');
+            }).then(function(data) {
+                showMsg(data.message || 'Subscribed!', false);
+                document.getElementById('newsletter-form').reset();
+            }).catch(function() {
+                showMsg('Something went wrong. Please try again.', true);
+            });
+        });
+        
+        // Contact Form Handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const cfg = window.KORA_SITE_CONFIG || {};
+            const apiBaseUrl = (cfg.apiBaseUrl || '').replace(/\/+$/, '');
+            const businessId = cfg.businessId;
+            const recaptchaSiteKey = cfg.recaptchaSiteKey;
+            
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+            const statusEl = document.getElementById('form-status');
+            
+            // Validation
+            let hasError = false;
+            
+            if (!name) {
+                document.getElementById('name-error').classList.remove('hidden');
+                hasError = true;
+            } else {
+                document.getElementById('name-error').classList.add('hidden');
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                document.getElementById('email-error').classList.remove('hidden');
+                hasError = true;
+            } else {
+                document.getElementById('email-error').classList.add('hidden');
+            }
+            
+            if (!message) {
+                document.getElementById('message-error').classList.remove('hidden');
+                hasError = true;
+            } else {
+                document.getElementById('message-error').classList.add('hidden');
+            }
+            
+            if (!recaptchaSiteKey) {
+                statusEl.textContent = 'Form temporarily unavailable.';
+                statusEl.style.color = '#f87171';
+                return;
+            }
+            
+            const captchaToken = grecaptcha.getResponse();
+            if (!captchaToken) {
+                document.getElementById('captcha-error').classList.remove('hidden');
+                hasError = true;
+            } else {
+                document.getElementById('captcha-error').classList.add('hidden');
+            }
+            
+            if (hasError || !apiBaseUrl || !businessId) return;
+            
+            statusEl.textContent = 'Sending...';
+            statusEl.style.color = '#64748b';
+            
+            fetch(apiBaseUrl + '/api/v1/public/forms/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    business_id: businessId,
+                    form_type: 'contact',
+                    form_data: {
+                        name: name,
+                        email: email,
+                        message: message
+                    },
+                    submitter_email: email,
+                    captcha_token: captchaToken
+                })
+            }).then(function(r) {
+                if (r.ok) return r.json();
+                throw new Error('Request failed');
+            }).then(function(data) {
+                statusEl.textContent = 'Message sent successfully!';
+                statusEl.style.color = '#4ade80';
+                document.getElementById('contact-form').reset();
+                grecaptcha.reset();
+            }).catch(function() {
+                statusEl.textContent = 'Something went wrong. Please try again.';
+                statusEl.style.color = '#f87171';
+            });
+        });
+    </script>
+</body>
+</html>
