@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.914popups.com/sitemap.xml
+Sitemap: https://staging.kora-569380a1-39f2-4f47-a011-2f705c2b0727.pages.dev/sitemap.xml
